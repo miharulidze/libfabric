@@ -167,6 +167,17 @@ RXM_INI ;
 #  define RXM_INIT NULL
 #endif
 
+#if (HAVE_SUET) && (HAVE_SUET_DL)
+#  define SUET_INI FI_EXT_INI
+#  define SUET_INIT NULL
+#elif (HAVE_SUET)
+#  define SUET_INI INI_SIG(fi_suet_ini)
+#  define SUET_INIT fi_suet_ini()
+SUET_INI ;
+#else
+#  define SUET_INIT NULL
+#endif
+
 #if (HAVE_RXD) && (HAVE_RXD_DL)
 #  define RXD_INI FI_EXT_INI
 #  define RXD_INIT NULL

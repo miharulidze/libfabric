@@ -1,0 +1,15 @@
+if HAVE_SUET
+_suet_files = \
+       prov/suet/src/suet_init.c
+
+if HAVE_SUET_DL
+pkglib_LTLIBRARIES += libsuet-fi.la
+libsuet_fi_la_SOURCES = $(_suet_files) $(common_srcs)
+libsuet_fi_la_LIBADD = $(linkback)
+libsuet_fi_la_LDFLAGS = -module -avoid-version -shared -export-dynamic
+libsuet_fi_la_DEPENDENCIES = $(linkback)
+else !HAVE_SUET_DL
+src_libfabric_la_SOURCES += $(_suet_files)
+endif !HAVE_SUET_DL
+
+endif HAVE_SUET
