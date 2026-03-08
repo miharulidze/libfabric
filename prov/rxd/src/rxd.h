@@ -125,6 +125,7 @@ struct rxd_domain {
 struct rxd_peer {
 	struct dlist_entry entry;
 	fi_addr_t peer_addr;
+	fi_addr_t dg_addr;		/* cached DG-layer address; set at peer creation */
 	uint64_t tx_seq_no;
 	uint64_t rx_seq_no;
 	uint64_t last_rx_ack;
